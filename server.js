@@ -9,7 +9,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-const port = 5000;
+const port = 5000 || process.env.PORT;
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "https://ispark.onrender.com");
@@ -137,6 +137,6 @@ app.post('/contactData', (req, res) => {
   })
 })
 
-app.listen(process.env.PORT || port, () => {
+app.listen(port, () => {
   console.log(`server is running on http://localhost:${port}`)
 })
